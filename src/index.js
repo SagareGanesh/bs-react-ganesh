@@ -8,5 +8,5 @@ ReactDOM.render(
   <Suspense fallback={ <Loader /> }>
     <App />
   </Suspense>,
-  document.getElementById('root')
+  document.getElementById('react-app-root')
 );
