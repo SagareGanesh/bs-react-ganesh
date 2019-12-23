@@ -20,7 +20,11 @@ const ProductCard = props => {
       />
 
       <div className="buyplan text-center" data-ats-visible="false" data-sold="true">
-        <Actions liked={ props.liked } />
+        <Actions
+          liked={ props.liked }
+          imgUrl={ `${ props.imgPath }` }
+          imgAltText={ props.imgAltText }
+        />
 
         <Months badges={ props.badges }/>
       </div>

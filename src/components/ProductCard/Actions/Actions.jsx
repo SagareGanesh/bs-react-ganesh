@@ -15,7 +15,11 @@ const Actions = props => {
         notLikedUrl={props.notLikedUrl}
       />
 
-      <Zoom zoomIconUrl={props.zoomIconUrl} />
+      <Zoom
+        zoomIconUrl={props.zoomIconUrl}
+        imgUrl={props.imgUrl}
+        imgAltText={props.imgAltText}
+      />
 
       <Resources />
 

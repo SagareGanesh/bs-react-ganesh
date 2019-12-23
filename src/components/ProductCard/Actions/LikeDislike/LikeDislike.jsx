@@ -32,7 +32,8 @@ const LikeDislike = props => {
 
 const StyledLikeDislike = styled(LikeDislike)`
   margin-bottom: 1ex;
-`
+  cursor: pointer;
+`;
 
 LikeDislike.defaultProps = {
   id: '',
