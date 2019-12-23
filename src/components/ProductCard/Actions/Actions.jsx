@@ -36,9 +36,10 @@ Actions.defaultProps = {
 }
 
 const StyledActions = styled(Actions)`
+  overflow: visible;
   position: absolute;
-  top: 2%;
-  right: 8%;
+  top: 5px;
+  right: 2px;
 `;
 
 export default StyledActions;

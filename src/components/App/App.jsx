@@ -4,7 +4,8 @@ import { Container, Row } from 'reactstrap';
 import ProductCardList from 'components/ProductCard/List/List.jsx';
 
 const fetchProdcuts = async () => {
-  const url = "http://localhost:3000/releases/1424/products.json?offset=30&limit=20";
+  const url = "http://localhost:3000/api/releases/1424/products.json?limit=80&offset=0";
+
 
   const formData = new FormData();
   formData.append("type", "");
@@ -59,14 +60,14 @@ const fetchProdcuts = async () => {
     method: "GET"
   };
 
-  const optionsForPost = {
-    ...baseOptions,
-    method: "POST",
-    body: formData
-  };
+  // const optionsForPost = {
+  //   ...baseOptions,
+  //   method: "POST",
+  //   body: formData
+  // };
 
   try {
-    let rawResponse = await fetch(url, optionsForPost);
+    let rawResponse = await fetch(url, baseOptions);
 
     return rawResponse.json();
   } catch(exception) {
@@ -83,7 +84,7 @@ const App = props => {
 
   return(
     <Container fluid className={ props.className }>
-      <Row>
+      <Row className="justify-content-center">
         <ProductCardList products={ products } />
       </Row>
     </Container>

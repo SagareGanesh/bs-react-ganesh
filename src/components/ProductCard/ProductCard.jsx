@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 
 import Thumbnail from './Thumbnail/Thumbnail.jsx';
 import Actions from './Actions/Actions.jsx';
@@ -9,7 +10,7 @@ import Caption from './Caption/Caption.jsx';
 const ProductCard = props => {
   return (
     <div
-      className={ `product mb-3` }
+      className={ `${ props.className } product mb-3` }
       data-product-id={ props.productId }
       data-release-id={ props.releaseId }
     >
@@ -39,6 +40,23 @@ const ProductCard = props => {
   );
 };
 
+const StyledProductCard = styled(ProductCard)`
+  display: inline-block;
+  margin-bottom: 20px;
+  margin-left: 0px !important;
+  min-height: 300px !important;
+  text-align: center;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  position: relative;
+  vertical-align: top;
+  width: 195px !important;
+  margin-right: 10px;
+  &:hover {
+    border: 1px solid #ddd;
+  }
+`;
+
 ProductCard.defaultProps = {
   productId: 120055,
   releaseId: 1424,
@@ -47,5 +65,5 @@ ProductCard.defaultProps = {
   liked: false
 };
 
-export default ProductCard;
+export default StyledProductCard;
 

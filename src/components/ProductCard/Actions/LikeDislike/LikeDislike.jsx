@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { TiTick, TiTickOutline } from 'react-icons/ti';
 
 const LikeDislike = props => {
   const [liked, setLiked] = useState(props.liked);
@@ -20,10 +21,7 @@ const LikeDislike = props => {
         data-record-id={props.recordId}
       >
         {
-          liked ?
-            <img src={props.likedUrl} alt="liked img"/>
-          :
-            <img src={props.notLikedUrl} alt="not liked img"/>
+          liked ? <TiTick /> : <TiTickOutline />
         }
       </div>
     </div>
@@ -33,6 +31,12 @@ const LikeDislike = props => {
 const StyledLikeDislike = styled(LikeDislike)`
   margin-bottom: 1ex;
   cursor: pointer;
+
+  svg {
+    width: 2em;
+    height: auto;
+    fill: #2f8be2;
+  }
 `;
 
 LikeDislike.defaultProps = {
