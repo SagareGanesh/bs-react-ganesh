@@ -10,14 +10,14 @@ const LikeDislike = props => {
 
   return (
     <div
-      className={`actions ${props.className} ${props.additionalClasses}`}
+      className={`actions ${props.className}`}
     >
       <div
         className={`like ${liked ? 'liked' : ''}`}
         onClick={toggleLiked}
         data-id={props.id}
-        data-product={props.productId}
-        data-record={props.recordId}
+        data-product-id={props.productId}
+        data-record-id={props.recordId}
       >
         {
           liked ?

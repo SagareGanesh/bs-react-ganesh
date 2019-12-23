@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const Zoom = props => {
   return (
     <div
-      className={`zoom ${props.className} ${props.additionalClasses}`}
+      className={`zoom ${props.className}`}
       data-product-id={props.productId}
     >
       <img src={props.zoomIconUrl} alt="zoom icon"/>

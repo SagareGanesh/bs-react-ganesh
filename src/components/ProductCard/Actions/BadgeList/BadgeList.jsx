@@ -7,10 +7,7 @@ const BadgeList = props => {
     return (
       <Badge
         key={ badge.id || index }
-        className={`
-          ${ props.className } ${ props.additionalClasses }
-          mr-1
-        `}
+        className={`${ props.additionalClasses } mr-1`}
         color="secondary"
       >
         { badge.text }

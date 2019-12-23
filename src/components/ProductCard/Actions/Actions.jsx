@@ -9,7 +9,7 @@ import Quantity from './Quantity/Quantity.jsx';
 const Actions = props => {
   return (
     <div className={`${props.className} ${props.additionalClasses}`}>
-      <LikeDislike
+      <LikeDislike className={ `actions ${ props.className }` }
         liked={props.liked}
         likedUrl={props.likedUrl}
         notLikedUrl={props.notLikedUrl}
@@ -25,10 +25,10 @@ const Actions = props => {
 }
 
 Actions.defaultProps = {
-  likedUrl: "http://localhost:3000/images/like_button_on.png",
-  notLikedUrl: "http://localhost:3000/images/like_button_off.png",
-  zoomIconUrl: "http://localhost:3000/images/zoom_icon.png",
-  qtyIconUrl: "http://localhost:3000/images/qty.png"
+  likedUrl: "https://brandscope.com.au/images/like_button_on.png",
+  notLikedUrl: "https://brandscope.com.au/images/like_button_off.png",
+  zoomIconUrl: "https://brandscope.com.au/images/zoom_icon.png",
+  qtyIconUrl: "https://brandscope.com.au/images/qty.png"
 }
 
 const StyledActions = styled(Actions)`

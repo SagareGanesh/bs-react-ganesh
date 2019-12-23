@@ -9,23 +9,28 @@ import Caption from './Caption/Caption.jsx';
 const ProductCard = props => {
   return (
     <div
-      className={ `${props.className} product mb-3` }
+      className={ `product mb-3` }
       data-product-id={ props.productId }
       data-release-id={ props.releaseId }
     >
       <Thumbnail
         productId={ props.productId }
-        url='/'
-        imgSrc={ props.imgSrc }
+        imgSrc={ `${ props.imgPath }` }
+        altText={ props.imgAltText }
       />
 
       <div className="buyplan text-center" data-ats-visible="false" data-sold="true">
         <Actions liked={ props.liked } />
 
-        <Months />
+        <Months badges={ props.badges }/>
       </div>
 
-      <Caption />
+      <Caption
+        name={ props.captionName }
+        color={ props.captionColor }
+        price={ props.captionPrice }
+        sku={ props.captionSku }
+      />
     </div>
   );
 };
@@ -33,7 +38,8 @@ const ProductCard = props => {
 ProductCard.defaultProps = {
   productId: 120055,
   releaseId: 1424,
-  imgSrc: "https://res.cloudinary.com/brandscope/image/upload/c_fill,h_160,w_128/v1561596065/production/product_asset/image/243034.jpg",
+  imgPath: "v1561596065/production/product_asset/image/243034.jpg",
+  imgAltText: "product thumbnail alt text",
   liked: false
 };
 

@@ -1,66 +1,90 @@
-import React from 'react';
-import { Container, Row, Col } from 'reactstrap';
-import styled from 'styled-components';
+import React, { useEffect, useState } from 'react';
+import { Container, Row } from 'reactstrap';
 
-import ProductCard from 'components/ProductCard/ProductCard.jsx';
+import ProductCardList from 'components/ProductCard/List/List.jsx';
+
+const fetchProdcuts = async () => {
+  const url = "http://localhost:3000/releases/1424/products.json?offset=30&limit=20";
+
+  const formData = new FormData();
+  formData.append("type", "");
+
+  formData.append("divisions[]", "Short Sleeve");
+  formData.append("divisions[]", "Dress");
+  formData.append("divisions[]", "Long Sleeve");
+  formData.append("divisions[]", "Pants");
+  formData.append("divisions[]", "Tank");
+  formData.append("divisions[]", "Walkshorts");
+  formData.append("divisions[]", "Bags");
+  formData.append("divisions[]", "Accessories");
+
+  formData.append("collections[]", "Unassigned");
+
+  formData.append("filter_tags[]", "Accessories");
+  formData.append("filter_tags[]", "Dress");
+  formData.append("filter_tags[]", "Jumpers");
+  formData.append("filter_tags[]", "Knits");
+  formData.append("filter_tags[]", "Pants/Denim");
+  formData.append("filter_tags[]", "Tees Printables");
+  formData.append("filter_tags[]", "Walkshorts");
+  formData.append("filter_tags[]", "Wovens");
+
+  formData.append("months[]", "2019-12-01");
+  formData.append("months[]", "2020-01-01");
+
+  formData.append("sizes[]", "XS");
+  formData.append("sizes[]", "S");
+  formData.append("sizes[]", "M");
+  formData.append("sizes[]", "L");
+  formData.append("sizes[]", "24");
+  formData.append("sizes[]", "25");
+  formData.append("sizes[]", "26");
+  formData.append("sizes[]", "27");
+  formData.append("sizes[]", "28");
+  formData.append("sizes[]", "29");
+  formData.append("sizes[]", "30");
+  formData.append("sizes[]", "31");
+  formData.append("sizes[]", "O/S");
+
+  formData.append("genders[]", "Female");
+
+  formData.append("age_groups[]", "Adult");
+
+  formData.append("min_price", "39");
+  formData.append("max_price", "110");
+
+  const baseOptions = {
+    credentials: "include",
+    "Content-Type": "application/json",
+    method: "GET"
+  };
+
+  const optionsForPost = {
+    ...baseOptions,
+    method: "POST",
+    body: formData
+  };
+
+  try {
+    let rawResponse = await fetch(url, optionsForPost);
+
+    return rawResponse.json();
+  } catch(exception) {
+    console.error("Exception: ", exception);
+  }
+}
 
 const App = props => {
+  let [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetchProdcuts().then(apiResponse => setProducts(apiResponse.pr));
+  }, []);
+
   return(
     <Container fluid className={ props.className }>
       <Row>
-        <Col>
-          <ProductCard
-            imgSrc="https://res.cloudinary.com/brandscope/image/upload/c_fill,h_160,w_128/v1561596065/production/product_asset/image/243034.jpg"
-            liked={ true }
-          />
-        </Col>
-        <Col>
-          <ProductCard
-            imgSrc="https://res.cloudinary.com/brandscope/image/upload/c_fill,h_160,w_128/v1561596100/production/product_asset/image/243036.jpg"
-          />
-        </Col>
-        <Col>
-          <ProductCard
-            imgSrc="https://res.cloudinary.com/brandscope/image/upload/c_fill,h_160,w_128/v1561596111/production/product_asset/image/243037.jpg"
-        />
-        </Col>
-        <Col>
-          <ProductCard
-            imgSrc="https://res.cloudinary.com/brandscope/image/upload/c_fill,h_160,w_128/v1561597497/production/product_asset/image/243038.jpg"
-            liked={ true }
-          />
-        </Col>
-        <Col>
-          <ProductCard
-            imgSrc="https://res.cloudinary.com/brandscope/image/upload/c_fill,h_160,w_128/v1561597505/production/product_asset/image/243039.jpg"
-          />
-        </Col>
-        <Col>
-          <ProductCard
-            imgSrc="https://res.cloudinary.com/brandscope/image/upload/c_fill,h_160,w_128/v1561597610/production/product_asset/image/243040.jpg"
-          />
-        </Col>
-        <Col>
-          <ProductCard
-            imgSrc="https://res.cloudinary.com/brandscope/image/upload/c_fill,h_160,w_128/v1561597696/production/product_asset/image/243041.jpg"
-          />
-        </Col>
-        <Col>
-          <ProductCard
-            imgSrc="https://res.cloudinary.com/brandscope/image/upload/c_fill,h_160,w_128/v1561597705/production/product_asset/image/243042.jpg"
-          />
-        </Col>
-        <Col>
-          <ProductCard
-            imgSrc="https://res.cloudinary.com/brandscope/image/upload/c_fill,h_160,w_128/v1/production/product_asset/image/5b4681e4b80cc8166a000a0d.jpg"
-          />
-        </Col>
-        <Col>
-          <ProductCard
-            imgSrc="https://res.cloudinary.com/brandscope/image/upload/c_fill,h_160,w_128/v1/production/product_asset/image/5b4681f6b80cc82097000457.jpg"
-            liked={ true }
-          />
-        </Col>
+        <ProductCardList products={ products } />
       </Row>
     </Container>
   );

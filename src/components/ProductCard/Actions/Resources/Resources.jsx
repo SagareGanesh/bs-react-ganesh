@@ -3,7 +3,7 @@ import React from 'react';
 const Resources = props => {
   return (
     <div
-      className={`${props.className} ${props.additionalClasses} resources`}
+      className={`resources`}
       data-product-id={props.productId}
     >
 

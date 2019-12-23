@@ -5,8 +5,7 @@ const Caption = props => {
   return (
     <div
       className={`
-        ${ props.className } ${ props.additionalClasses }
-        caption d-flex flex-column text-center
+        ${ props.className } caption d-flex flex-column text-center
       `}
     >
       <span className="name d-block text-truncate">
@@ -17,13 +16,9 @@ const Caption = props => {
         { props.color }
       </span>
 
-      <br />
-
       <span className="price">
         { props.price }
       </span>
-
-      <br />
 
       <span className="sku">
         { props.sku }

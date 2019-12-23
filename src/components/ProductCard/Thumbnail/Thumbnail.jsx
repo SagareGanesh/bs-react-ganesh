@@ -3,7 +3,7 @@ import React from 'react';
 const Thumbnail = props => {
   return (
     <div
-      className={`thumbnail text-center ${props.additionalClasses}`}
+      className={`thumbnail text-center`}
       data-product-id={props.productId}
     >
       <a href={props.url}>
@@ -18,7 +18,7 @@ const Thumbnail = props => {
 }
 
 Thumbnail.defaultProps = {
-  url: "/",
+  url: "#",
   altText: "product thumbnail alt text"
 };
 
